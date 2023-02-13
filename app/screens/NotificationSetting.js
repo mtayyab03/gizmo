@@ -55,10 +55,10 @@ export default function NotificationSetting(props) {
         },
     ]
   return (
-    <Screen style={{ flex: 1, justifyContent: 'flex-start', alignItems: 'center',backgroundColor: Colors.white }}>
+    <Screen style={styles.screen}>
 
         {/* headerComponent */}
-        <View style={{width:'100%',flexDirection:'row',alignItems:'center',justifyContent:'center',marginTop: RFPercentage(4)}}>
+        <View style={styles.headermain}>
             <HeaderMode  title='Notification Setting' onpress={() => { props.navigation.navigate('PersonalInformationScreen')}}/>
         </View>
 
@@ -66,15 +66,15 @@ export default function NotificationSetting(props) {
         
         <FlatList
                 scrollEnabled={false}
-                style={{width: '90%', marginTop: RFPercentage(4),flexGrow:0}}
+                style={styles.flatstyl}
                 data={NotificationList}
                 keyExtractor={NotificationList => NotificationList.id.toString()}
                 showsVerticalScrollIndicator={false}
                 vertical
                 renderItem={({ item }) =>
                 <View>
-                <View style={{flexDirection:'row',alignItems:'center',justifyContent:'space-between',marginTop:Platform.OS === 'ios' ?20:2}}>
-                      <Text style={{fontSize:RFPercentage(2.3),fontWeight:'600',color:Colors.black,fontFamily:FontFamily.medium}}> 
+                <View style={styles.textswitmain}>
+                      <Text style={styles.textswit}> 
                               {item.title}
                          </Text>
 
@@ -85,3 +85,16 @@ export default function NotificationSetting(props) {
      </Screen>
   )
 }
+
+const styles = StyleSheet.create({
+    screen:{ flex: 1, justifyContent: 'flex-start',
+      alignItems:'center',backgroundColor: Colors.white },
+
+      //header
+      headermain:{width:'100%',flexDirection:'row',alignItems:'center',justifyContent:'center',marginTop: RFPercentage(4)},
+
+      //switchlines
+      flatstyl:{width: '90%', marginTop: RFPercentage(4),flexGrow:0},
+      textswit:{fontSize:RFPercentage(2.3),fontWeight:'600',color:Colors.black,fontFamily:FontFamily.medium},
+      textswitmain:{flexDirection:'row',alignItems:'center',justifyContent:'space-between',marginTop:Platform.OS === 'ios' ?20:10},
+})

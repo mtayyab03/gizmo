@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import {
   View,
   Text,
-  ImageBackground,
+  StyleSheet,
   Image,
   TouchableOpacity,
 } from 'react-native';
@@ -25,77 +25,73 @@ import { FontFamily } from '../config/font';
 const CustomDrawer = (props) => {
   const[buttonClick,setButtonClick]=useState(true)
   return (
-    <View style={{flex: 1,alignItems:'center'}}>
+    <View style={styles.screen}>
       
-           <View style={{width:'90%',flexDirection:'row',alignItems:'center',justifyContent:'center',marginTop: RFPercentage(6)}}>
+           <View style={styles.headermain}>
            <TouchableOpacity activeOpacity={0.7} 
-          style={{ position:'absolute',left:0 ,alignItems:'center',
-                  justifyContent:'center',width:RFPercentage(5.5),height:RFPercentage(5.5),
-                  borderRadius:RFPercentage(4),backgroundColor:Colors.white}}>
-         <Image
-          style={{
-              width: RFPercentage(3.5),
-              height: RFPercentage(3.5),
-          }}
-          source={require('../../assets/images/cancelIcon.png')} />
-      </TouchableOpacity>
+                   style={styles.iconcircle}>
+                  <Image
+                   style={styles.headericon}
+                   source={require('../../assets/images/cancelIcon.png')} />
+               </TouchableOpacity>
 
-      <Text style={{fontWeight:'600',fontSize:RFPercentage(2.5), color:Colors.black,fontFamily:FontFamily.semiBold}}>
-         My Profile
-      </Text>
+               <Text style={styles.headertext}>
+                  My Profile
+               </Text>
         </View>
-        <View style={{width:'90%',height:RFPercentage(14),borderWidth:RFPercentage(0.1),marginTop:RFPercentage(5),alignItems:'center',justifyContent:'center',
-                     borderColor:Colors.lightWhite,borderRadius:RFPercentage(2),padding:RFPercentage(1.5)}}>
-                      <View style={{flexDirection:'row',alignItems:'center',justifyContent:'space-between'}}>
+
+        {/* //profile */}
+        <View style={styles.profilemain}>
+                      <View style={styles.innermaincon}>
                        
                       <Image
-                  style={{
-                      width: RFPercentage(10),
-                      height: RFPercentage(10),
-                  }}
+                  style={styles.profimg}
                   source={require('../../assets/images/person5.png')} />
                   
-                  <View style={{marginLeft:RFPercentage(2.1)}}>
-                  <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
-                  <Text style={{fontWeight:'600',fontFamily:'Poppins_600SemiBold',fontSize:RFPercentage(2)}}>
+                 
+             <View style={styles.proftextmaincon}>
+                <View style={styles.darltextmain}>
+                  <Text style={styles.darltext}>
                         Darlene Robertson
                   </Text>
-                  <View style={{marginLeft:RFPercentage(1)}}>
+                <View style={{marginLeft:RFPercentage(1)}}>
                   <Ionicons
                     name="checkmark-circle"
                     size={20}
                     color={ Colors.green}
                   />
-                  </View>
-                  </View>
-                  <Text style={{fontWeight:'400',fontSize:RFPercentage(1.7),marginTop:RFPercentage(0.4),fontFamily:FontFamily.regular}}>
+               </View>
+              </View>
+                  <Text style={styles.mktext}>
                       @mkbhd
                   </Text>
-                  <View style={{flexDirection:'row',marginTop:RFPercentage(0.4),alignItems:'center'}}>
-                  <Text style={{fontWeight:'400',fontFamily:'Poppins_500Medium',color:Colors.third}}>
+                <View style={styles.vptextmain}>
+                  <Text style={styles.vptext}>
                         View Profile
                   </Text>
-                  <View style={{marginLeft:RFPercentage(0.1)}}>
+                <View style={{marginLeft:RFPercentage(0.1)}}>
                   <MaterialIcons
                     name="keyboard-arrow-right"
                     size={23}
                     color={ Colors.third}
                   />
                   </View>
-                  </View>
-                  </View>
-                 </View>
+               </View>
+           </View>
+        </View>
             
         </View>
-        <View style={{backgroundColor: '#fff', paddingTop: 20,width:'90%',flexDirection:'row'}}>
-             <TouchableOpacity activeOpacity={0.7} onPress={() => setButtonClick(true)} style={{width:RFPercentage(13),height:RFPercentage(6),borderRadius:RFPercentage(5),
+        <View style={styles.categorybuttonmain}>
+             <TouchableOpacity activeOpacity={0.7} onPress={() => setButtonClick(true)} 
+                   style={{width:RFPercentage(13),height:RFPercentage(6),borderRadius:RFPercentage(5),
                        backgroundColor:buttonClick==true?Colors.third:Colors.white,alignItems:'center',justifyContent:'center',
                         borderWidth:RFPercentage(0.3),borderColor:Colors.third}}>
                 <Text style={{fontWeight:'400',fontFamily:'Poppins_500Medium',color:buttonClick==true?Colors.white:Colors.third,}}>
                         Activity
                   </Text>
              </TouchableOpacity>
-             <TouchableOpacity activeOpacity={0.7} onPress={() => setButtonClick(false)} style={{width:RFPercentage(13),height:RFPercentage(6),borderRadius:RFPercentage(5),
+             <TouchableOpacity activeOpacity={0.7} onPress={() => setButtonClick(false)} 
+             style={{width:RFPercentage(13),height:RFPercentage(6),borderRadius:RFPercentage(5),
                        backgroundColor:buttonClick==false?Colors.third:Colors.white,alignItems:'center',justifyContent:'center',
                          borderWidth:RFPercentage(0.3),borderColor:Colors.third,marginLeft:RFPercentage(1)}}>
                 <Text style={{fontWeight:'400',fontFamily:'Poppins_500Medium',color:buttonClick==false?Colors.lightWhite:Colors.third}}>
@@ -105,14 +101,12 @@ const CustomDrawer = (props) => {
         </View>
 
         {/* Activity list */}
-        <View style={{width:'90%',paddingTop: 25,justifyContent:'center'}}>
+        <View style={styles.activlistmain}>
           {/* Watch History */}
-            <View style={{flexDirection:'row',alignItems:'center',justifyContent:'space-between'}}>
-              <View style={{flexDirection:'row',marginTop:RFPercentage(0.7),alignItems:'center'}}>
+            <View style={styles.watchlistmain}>
+              <View style={styles.rowline}>
               <TouchableOpacity activeOpacity={0.7} 
-                 style={{alignItems:'center',
-                  justifyContent:'center',width:RFPercentage(4.7),height:RFPercentage(4.7),
-                  borderRadius:RFPercentage(4),backgroundColor:Colors.white}}>
+                 style={styles.circleiconlist}>
                     <Image
                      style={{
                          width: RFPercentage(2.5),
@@ -120,12 +114,12 @@ const CustomDrawer = (props) => {
                      }}
                      source={require('../../assets/images/historyicon.png')} />
                  </TouchableOpacity>
-                  <Text style={{fontSize:RFPercentage(2.2),fontWeight:'400',fontFamily:'Poppins_500Medium',color:Colors.black,marginLeft:RFPercentage(2)}}>
+                  <Text style={styles.listtext}>
                         Watch History
                   </Text>
                   
             </View>
-            <View style={{alignItems:'center',justifyContent:'center',marginTop:RFPercentage(0.3)}}>
+            <View style={styles.arrowicon}>
                   <MaterialIcons
                     name="keyboard-arrow-right"
                     size={32}
@@ -135,24 +129,22 @@ const CustomDrawer = (props) => {
               </View>
 
               {/* Liked */}
-              <View style={{flexDirection:'row',alignItems:'center',justifyContent:'space-between',marginTop:RFPercentage(3)}}>
-              <View style={{flexDirection:'row',marginTop:RFPercentage(0.7),alignItems:'center'}}>
+              <View style={styles.listmain}>
+              <View style={styles.rowline}>
               <TouchableOpacity activeOpacity={0.7} 
-                 style={{alignItems:'center',
-                  justifyContent:'center',width:RFPercentage(4.7),height:RFPercentage(4.7),
-                  borderRadius:RFPercentage(4),backgroundColor:Colors.white}}>
+                 style={styles.circleiconlist}>
                     <AntDesign
                     name="like2"
                     size={21}
                     color={ Colors.third}
                   />
                  </TouchableOpacity>
-                  <Text style={{fontSize:RFPercentage(2.2),fontWeight:'400',fontFamily:'Poppins_500Medium',color:Colors.black,marginLeft:RFPercentage(2)}}>
+                  <Text style={styles.listtext}>
                         Liked
                   </Text>
                   
             </View>
-            <View style={{alignItems:'center',justifyContent:'center',marginTop:RFPercentage(0.3)}}>
+            <View style={styles.arrowicon}>
                   <MaterialIcons
                     name="keyboard-arrow-right"
                     size={32}
@@ -162,24 +154,22 @@ const CustomDrawer = (props) => {
            </View>
 
             {/* Saved */}
-            <View style={{flexDirection:'row',alignItems:'center',justifyContent:'space-between',marginTop:RFPercentage(3)}}>
-              <View style={{flexDirection:'row',marginTop:RFPercentage(0.7),alignItems:'center'}}>
+            <View style={styles.listmain}>
+              <View style={styles.rowline}>
               <TouchableOpacity activeOpacity={0.7} 
-                 style={{alignItems:'center',
-                  justifyContent:'center',width:RFPercentage(4.7),height:RFPercentage(4.7),
-                  borderRadius:RFPercentage(4),backgroundColor:Colors.white}}>
+                 style={styles.circleiconlist}>
                     <MaterialCommunityIcons
                     name="bookmark-outline"
                     size={21}
                     color={ Colors.third}
                   />
                  </TouchableOpacity>
-                  <Text style={{fontSize:RFPercentage(2.2),fontWeight:'400',fontFamily:'Poppins_500Medium',color:Colors.black,marginLeft:RFPercentage(2)}}>
+                  <Text style={styles.listtext}>
                         Saved
                   </Text>
                   
             </View>
-            <View style={{alignItems:'center',justifyContent:'center',marginTop:RFPercentage(0.3)}}>
+            <View style={styles.arrowicon}>
                   <MaterialIcons
                     name="keyboard-arrow-right"
                     size={32}
@@ -189,19 +179,14 @@ const CustomDrawer = (props) => {
            </View>
            
         </View>
-{/* bottom button       */}
-      <View style={{width: '90%',position:'absolute',bottom:RFPercentage(2)}}>
+
+{/* bottom button */}
+      <View style={styles.mainbutton}>
         <TouchableOpacity activeOpacity={0.7} onPress={() => {}}>
-          <View  style={{ width: '100%', height: RFPercentage(6), borderRadius: RFPercentage(1), 
-              alignItems: 'center', justifyContent: 'center', marginTop: RFPercentage(2)
-            ,backgroundColor:Colors.third}}>
+          <View  style={styles.buttoncon}>
             
             <Text
-              style={{
-                fontSize: 15,
-                color:Colors.white,
-                fontFamily:'Poppins_600SemiBold',
-              }}>
+              style={styles.buttontextmain}>
               Log Out
             </Text>
           </View>
@@ -212,3 +197,61 @@ const CustomDrawer = (props) => {
 };
 
 export default CustomDrawer;
+
+const styles = StyleSheet.create({
+
+  screen:{flex: 1,alignItems:'center'},
+
+  //header
+  headermain:{width:'90%',flexDirection:'row',alignItems:'center',justifyContent:'center',marginTop: RFPercentage(6)},
+  iconcircle:{ position:'absolute',left:0 ,alignItems:'center',
+  justifyContent:'center',width:RFPercentage(5.5),height:RFPercentage(5.5),
+  borderRadius:RFPercentage(4),backgroundColor:Colors.white},
+  headericon:{
+    width: RFPercentage(3.5),
+    height: RFPercentage(3.5),
+},
+  headertext:{fontWeight:'600',fontSize:RFPercentage(2.5), color:Colors.black,fontFamily:FontFamily.semiBold},
+
+  //profile
+  profilemain:{width:'90%',height:RFPercentage(14),borderWidth:RFPercentage(0.1),
+         marginTop:RFPercentage(5),alignItems:'center',justifyContent:'center',
+         borderColor:Colors.lightWhite,borderRadius:RFPercentage(2),padding:RFPercentage(1.5)},
+  innermaincon:{flexDirection:'row',alignItems:'center',justifyContent:'space-between'},
+  profimg:{
+    width: RFPercentage(10),
+    height: RFPercentage(10),
+   },
+   proftextmaincon:{marginLeft:RFPercentage(2.1)},
+   darltextmain:{flexDirection:'row',justifyContent:'center',alignItems:'center'},
+   darltext:{fontWeight:'600',fontFamily:'Poppins_600SemiBold',fontSize:RFPercentage(2)},
+   mktext:{fontWeight:'400',fontSize:RFPercentage(1.7),marginTop:RFPercentage(0.4),fontFamily:FontFamily.regular},
+   vptextmain:{flexDirection:'row',marginTop:RFPercentage(0.4),alignItems:'center'},
+   vptext:{fontWeight:'400',fontFamily:'Poppins_500Medium',color:Colors.third},
+
+  // category button
+  categorybuttonmain:{backgroundColor: '#fff', paddingTop: 20,width:'90%',flexDirection:'row'},
+
+  // list
+  activlistmain:{width:'90%',paddingTop: 25,justifyContent:'center'},
+  watchlistmain:{flexDirection:'row',alignItems:'center',justifyContent:'space-between'},
+  listmain:{flexDirection:'row',alignItems:'center',justifyContent:'space-between',marginTop:RFPercentage(3)},
+  rowline:{flexDirection:'row',marginTop:RFPercentage(0.7),alignItems:'center'},
+  circleiconlist:{alignItems:'center',
+  justifyContent:'center',width:RFPercentage(4.7),height:RFPercentage(4.7),
+  borderRadius:RFPercentage(4),backgroundColor:Colors.white},
+  listtext:{fontSize:RFPercentage(2.2),fontWeight:'400',fontFamily:'Poppins_500Medium',color:Colors.black,marginLeft:RFPercentage(2)},
+  arrowicon:{alignItems:'center',justifyContent:'center',marginTop:RFPercentage(0.3)},
+
+
+  //button
+  mainbutton:{width: '90%',position:'absolute',bottom:RFPercentage(2)},
+  buttoncon:{ width: '100%', height: RFPercentage(6), borderRadius: RFPercentage(1), 
+             alignItems: 'center', justifyContent: 'center', marginTop: RFPercentage(2)
+             ,backgroundColor:Colors.third},
+  buttontextmain:{
+     fontSize: 15,
+     color:Colors.white,
+     fontFamily:'Poppins_600SemiBold',
+},
+})

@@ -12,21 +12,17 @@ export default function DoubleButton({firstbutton,secondbutton,setModalVisible,m
   return (
     <View style={{width:Platform.OS === 'ios' ?'90%':'100%',flexDirection:'row',justifyContent:'space-between'}}>
                        <TouchableOpacity activeOpacity={0.7} onPress={() => setModalVisible(!modalVisible)} 
-                                 style={{ width: RFPercentage(17), height: RFPercentage(6),
-                                           borderRadius: RFPercentage(1), alignItems: 'center', justifyContent: 'center',
-                                           backgroundColor:Colors.white}}>
+                                 style={styles.firbutmain}>
                                 
-                                    <Text style={{ color: Colors.grey, fontSize: RFPercentage(2.2), fontWeight:'700',fontFamily:FontFamily.semiBold }}>
+                                    <Text style={styles.firbuttontext}>
                                         {firstbutton}
                                     </Text>
                                  
                         </TouchableOpacity>
                         <TouchableOpacity activeOpacity={0.7} onPress={() => setModalVisible(!modalVisible)} 
-                                 style={{ width: RFPercentage(17), height: RFPercentage(6),
-                                           borderRadius: RFPercentage(1), alignItems: 'center', justifyContent: 'center',
-                                           backgroundColor:Colors.third}}>
+                                 style={styles.secdbutton}>
                                 
-                                    <Text style={{ color: Colors.white, fontSize: RFPercentage(2.2), fontWeight:'700',fontFamily:FontFamily.semiBold }}>
+                                    <Text style={styles.secdbuttontext}>
                                         {secondbutton}
                                     </Text>
                                  
@@ -34,3 +30,14 @@ export default function DoubleButton({firstbutton,secondbutton,setModalVisible,m
          </View>
   )
 }
+
+const styles = StyleSheet.create({
+  firbutmain:{ width: RFPercentage(17), height: RFPercentage(6),
+    borderRadius: RFPercentage(1), alignItems: 'center', justifyContent: 'center',
+    backgroundColor:Colors.white},
+  firbuttontext:{ color: Colors.grey, fontSize: RFPercentage(2.2), fontWeight:'700',fontFamily:FontFamily.semiBold },
+  secdbutton:{ width: RFPercentage(17), height: RFPercentage(6),
+    borderRadius: RFPercentage(1), alignItems: 'center', justifyContent: 'center',
+    backgroundColor:Colors.third},
+  secdbuttontext:{ color: Colors.white, fontSize: RFPercentage(2.2), fontWeight:'700',fontFamily:FontFamily.semiBold },
+})

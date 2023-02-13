@@ -22,10 +22,12 @@ export default function LoginScreen(props) {
         password: yup.string().required().min(4).label('Password'),
         })
   return (
-    <Screen style={{ flex: 1, justifyContent: 'center',alignItems:'center',backgroundColor: Colors.white }}>
-
-        
-
+    <Screen style={styles.screen}>
+           <View style={styles.logocontainer}>
+             <Image
+             style={styles.logo}
+             source={require('../../assets/images/gizmologoorange.png')} />
+              </View>
                 {/* //email input */}
                 <Formik
                       initialValues={{ email: '', password: '' }}
@@ -35,20 +37,10 @@ export default function LoginScreen(props) {
                         {({handleChange,handleSubmit,errors,setFieldTouched,touched})=>(
                             
                         <>
-                        <View style={{width: '100%',alignItems:'center',justifyContent:'center'}}>
-                          <View style={{
-                          width: '90%',
-                          height: RFPercentage(7.5),
-                          backgroundColor: Colors.white,
-                          borderWidth:RFPercentage(0.1),
-                          borderColor:Colors.lightWhite,
-                          color: Colors.black,
-                          paddingLeft: RFPercentage(3),
-                          borderRadius: RFPercentage(1.5),
-                          justifyContent: 'center'
-                        }}>
+                        <View style={styles.inputmaincontainer}>
+                          <View style={styles.emailmain}>
                     <TextInput
-                       style={{fontFamily:FontFamily.regular}}
+                       style={styles.input}
                         keyboardType='email-address'
                         onChangeText={handleChange('email')}
                         onBlur={()=>setFieldTouched('email')}
@@ -58,23 +50,12 @@ export default function LoginScreen(props) {
                     />
                  </View>
                  <View style={{width:'90%'}}>
-                  {touched.email && <Text style={{color:'#FF0000',fontSize:RFPercentage(1.3),marginTop:RFPercentage(0.5),fontFamily:FontFamily.regular}}>{errors.email}</Text>}
+                  {touched.email && <Text style={styles.error}>{errors.email}</Text>}
                 </View>
                    
-                  <View style={{
-                          width: '90%',
-                          height: RFPercentage(7.5),
-                          backgroundColor: Colors.white,
-                          borderWidth:RFPercentage(0.1),
-                          borderColor:Colors.lightWhite,
-                          color: Colors.black,
-                          paddingLeft: RFPercentage(3),
-                          borderRadius: RFPercentage(1.5),
-                          justifyContent: 'center',
-                          marginTop:RFPercentage(2)
-                        }}>
+                  <View style={styles.passwordmain}>
                     <TextInput
-                        style={{fontFamily:FontFamily.regular}}
+                        style={styles.input}
                         onChangeText={handleChange('password')}
                         onBlur={()=>setFieldTouched('password')}
                         // value={Password}
@@ -82,27 +63,26 @@ export default function LoginScreen(props) {
                         placeholderTextColor={Colors.placeholder}
                         secureTextEntry={true && !eyeIcon}
                     />
-                       <TouchableOpacity activeOpacity={0.7} style={{ alignItems: 'center', justifyContent: 'center', position: "absolute", right: RFPercentage(1), width: RFPercentage(5), height: RFPercentage(5) }}>
+                       <TouchableOpacity onPress={() => setEyeIcon(!eyeIcon)} activeOpacity={0.7} 
+                             style={styles.eyeicon}>
 
-                           <TouchableOpacity onPress={() => setEyeIcon(!eyeIcon)} style={{ position: "absolute", right: RFPercentage(1), }}>
+                           
                                <MaterialCommunityIcons
                                    color={Colors.grey}
                                    style={{ right: RFPercentage(1) }}
                                    size={RFPercentage(3)}
                                    name={eyeIcon ? "eye-outline" : "eye-off-outline"}
                                />
+                           
                            </TouchableOpacity>
-                           </TouchableOpacity>
-
-
-                         
+      
                     </View>
                     <View style={{width:'90%'}}>
-                  {touched.password && <Text style={{color:'#FF0000',fontSize:RFPercentage(1.3),marginTop:RFPercentage(0.5),fontFamily:FontFamily.regular}}>{errors.password}</Text>}
+                  {touched.password && <Text style={styles.error}>{errors.password}</Text>}
                   </View>
                   </View>
                 
-                <TouchableOpacity  style={{width:'100%',justifyContent:'center',alignItems:'center',marginTop:RFPercentage(3)}} activeOpacity={0.7} 
+                <TouchableOpacity  style={styles.loginbutton} activeOpacity={0.7} 
                                         onPress={handleSubmit} >
                     <AppButton title='LOG IN' />
                 </TouchableOpacity>
@@ -112,42 +92,87 @@ export default function LoginScreen(props) {
 
                 </Formik>
                 
-               
+               {/* authetication by google apple fb */}
                    
-        <View style={{width:'90%',flexDirection:'row',alignItems:'center',justifyContent:'space-between',marginTop:RFPercentage(7)}}>
-            <View style={{width:RFPercentage(15),height:RFPercentage(8),alignItems:'center',justifyContent:'center',borderWidth:RFPercentage(0.1),
-                          borderColor:Colors.lightWhite,borderRadius:RFPercentage(2)}}>
+        <View style={styles.socialmain}>
+            <View style={styles.appfbgcontainer}>
               <Image
-                    style={{
-                        width: RFPercentage(4),
-                        height: RFPercentage(4),
-                    }}
+                    style={styles.fbglogo}
                     source={require('../../assets/images/fblogo.png')} />
             </View>
-            <View style={{width:RFPercentage(15),height:RFPercentage(8),alignItems:'center',justifyContent:'center',borderWidth:RFPercentage(0.1),
-                          borderColor:Colors.lightWhite,borderRadius:RFPercentage(2)}}>
+            <View style={styles.appfbgcontainer}>
               <Image
-                    style={{
-                        width: RFPercentage(4),
-                        height: RFPercentage(4),
-                    }}
+                    style={styles.fbglogo}
                     source={require('../../assets/images/glogo.png')} />
             </View>
-            <View style={{width:RFPercentage(15),height:RFPercentage(8),alignItems:'center',justifyContent:'center',borderWidth:RFPercentage(0.1),
-                          borderColor:Colors.lightWhite,borderRadius:RFPercentage(2)}}>
+            <View style={styles.appfbgcontainer}>
               <Image
-                    style={{
-                        width: RFPercentage(3.2),
-                        height: RFPercentage(4),
-                    }}
+                    style={styles.applelogo}
                     source={require('../../assets/images/applelogo.png')} />
             </View>
 
         </View>
-                
-
-            
+       
 
         </Screen>
   )
 }
+
+const styles = StyleSheet.create({
+    screen:{ flex: 1, justifyContent: 'flex-start',
+      alignItems:'center',backgroundColor: Colors.white },
+      logocontainer:{alignItems:'center',justifyContent:'center',marginTop:RFPercentage(15)},
+    logo:{
+      width: RFPercentage(21),
+      height: RFPercentage(5),
+    },
+    inputmaincontainer:{width: '100%',alignItems:'center',
+       justifyContent:'center',marginTop:RFPercentage(10)},
+    eyeicon:{ alignItems: 'center', justifyContent: 'center', 
+       position: "absolute", right: RFPercentage(1), 
+       width: RFPercentage(5), height: RFPercentage(5) },
+    emailmain:{
+    width: '90%',
+    height: RFPercentage(7.5),
+    backgroundColor: Colors.white,
+    borderWidth:RFPercentage(0.1),
+    borderColor:Colors.lightWhite,
+    color: Colors.black,
+    paddingLeft: RFPercentage(3),
+    borderRadius: RFPercentage(1.5),
+    justifyContent: 'center'
+  },
+    input:{fontFamily:FontFamily.regular},
+
+    passwordmain:{
+        width: '90%',
+        height: RFPercentage(7.5),
+        backgroundColor: Colors.white,
+        borderWidth:RFPercentage(0.1),
+        borderColor:Colors.lightWhite,
+        color: Colors.black,
+        paddingLeft: RFPercentage(3),
+        borderRadius: RFPercentage(1.5),
+        justifyContent: 'center',
+        marginTop:RFPercentage(2)
+      },
+    error:{color:'#FF0000',fontSize:RFPercentage(1.3),
+    marginTop:RFPercentage(0.5),fontFamily:FontFamily.regular},
+
+    loginbutton:{width:'100%',justifyContent:'center',alignItems:'center',marginTop:RFPercentage(3)},
+    appfbgcontainer:{
+        width:RFPercentage(15),height:RFPercentage(8),
+        alignItems:'center',justifyContent:'center',borderWidth:RFPercentage(0.1),
+         borderColor:Colors.lightWhite,borderRadius:RFPercentage(2)},
+    socialmain:{
+        width:'90%',flexDirection:'row',alignItems:'center',
+    justifyContent:'space-between',marginTop:RFPercentage(7)},
+    fbglogo:{
+       width: RFPercentage(4),
+       height: RFPercentage(4),
+},
+    applelogo:{
+        width: RFPercentage(3.2),
+        height: RFPercentage(4),
+    }
+  });

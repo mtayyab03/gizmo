@@ -12,18 +12,13 @@ export default function HeaderMode({title,onpress}) {
   
    <>
      <TouchableOpacity activeOpacity={0.7} onPress={onpress}
-          style={{ position:'absolute',left:RFPercentage(2) ,alignItems:'center',
-                  justifyContent:'center',width:RFPercentage(6),height:RFPercentage(6),
-                  borderRadius:RFPercentage(4),backgroundColor:Colors.purewhite}}>
+          style={styles.headermain}>
          <Image
-          style={{
-              width: RFPercentage(3.5),
-              height: RFPercentage(3.5),
-          }}
+          style={styles.imgicon}
           source={require('../../assets/images/backarrowlogo.png')} />
       </TouchableOpacity>
 
-      <Text style={{fontWeight:'600',fontSize:RFPercentage(2.5), color:Colors.black,fontFamily:FontFamily.medium}}>
+      <Text style={styles.texthead}>
          {title}
       </Text>
 
@@ -31,3 +26,16 @@ export default function HeaderMode({title,onpress}) {
 
   )
 }
+
+const styles = StyleSheet.create({
+  headermain:{ position:'absolute',left:RFPercentage(2) ,alignItems:'center',
+  justifyContent:'center',width:RFPercentage(6),height:RFPercentage(6),
+  borderRadius:RFPercentage(4),backgroundColor:Colors.purewhite},
+
+  imgicon:{
+    width: RFPercentage(3.5),
+    height: RFPercentage(3.5),
+},
+
+texthead:{fontWeight:'600',fontSize:RFPercentage(2.5), color:Colors.black,fontFamily:FontFamily.medium},
+})

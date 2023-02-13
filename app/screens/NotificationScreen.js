@@ -33,13 +33,13 @@ export default function NotificationScreen() {
     },
 ]
   return (
-    <Screen style={{ flex: 1, justifyContent: 'flex-start', alignItems: 'center',backgroundColor: Colors.white }}>
+    <Screen style={styles.screen}>
 
     {/* flatlist Card selection */}
         
     <FlatList
                scrollEnabled={false}
-                contentContainerStyle={{width: '95%',justifyContent:'space-between',alignItems:'center',flexDirection:'row'}}
+                contentContainerStyle={styles.flatcontainer}
                 style={{ marginTop: RFPercentage(5),flexGrow:0}}
                 data={cardRow}
                 keyExtractor={cardRow => cardRow.id.toString()}
@@ -54,25 +54,18 @@ export default function NotificationScreen() {
                   }}>
                    <View>
                         <ImageBackground
-                             style={{
-                                 width: RFPercentage(16),
-                                 height: RFPercentage(15),
-                                 alignItems:'center',justifyContent:'center'
-                             }}
+                             style={styles.imgbg}
                              source={item.imageSource}>
                               {menuid===item.id?
                                 <Image
-                                  style={{
-                                      width: RFPercentage(3),
-                                      height: RFPercentage(3),
-                                  }}
+                                  style={styles.checkimg}
                                   source={require('../../assets/images/checkmarkcircle.png')} />:null
                                 }
                              </ImageBackground>
                                 
                    </View>
-                <View style={{alignItems:'center',justifyContent:'center',marginTop:RFPercentage(1.5)}}>
-                    <Text style={{fontWeight:'600',fontFamily:'Poppins_500Medium',fontSize:RFPercentage(1.7),color:Colors.black}}>
+                <View style={styles.textmain}>
+                    <Text style={styles.cardtext}>
                        {item.title}
                     </Text>
                 </View>
@@ -81,3 +74,24 @@ export default function NotificationScreen() {
    </Screen>
   )
 }
+
+const styles = StyleSheet.create({
+  screen:{ flex: 1, justifyContent: 'flex-start',
+    alignItems:'center',backgroundColor: Colors.white },
+
+    flatcontainer:{width: '95%',justifyContent:'space-between',alignItems:'center',flexDirection:'row'},
+
+    imgbg:{
+      width: RFPercentage(16),
+      height: RFPercentage(15),
+      alignItems:'center',justifyContent:'center'
+  },
+  checkimg:{
+    width: RFPercentage(3),
+    height: RFPercentage(3),
+},
+textmain:{alignItems:'center',justifyContent:'center',marginTop:RFPercentage(1.5)},
+
+cardtext:{fontWeight:'600',fontFamily:'Poppins_500Medium',fontSize:RFPercentage(1.7),color:Colors.black},
+
+  });

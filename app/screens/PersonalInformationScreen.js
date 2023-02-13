@@ -41,31 +41,45 @@ export default function PersonalInformationScreen(props) {
        
     ]
   return (
-    <Screen style={{ flex: 1, justifyContent: 'flex-start', alignItems: 'center',backgroundColor: Colors.white }}>
+    <Screen style={styles.screen}>
 
         {/* headerComponent */}
-        <View style={{width:'100%',flexDirection:'row',alignItems:'center',justifyContent:'center',marginTop: RFPercentage(4)}}>
+        <View style={styles.headermain}>
             <HeaderMode  title='Personal information'/>
         </View>
 
        {/* InputFields */}
        <FlatList
                 scrollEnabled={false}
-                
-                style={{width: '100%', marginTop: RFPercentage(5),flexGrow:0}}
+                style={styles.flatstylinput}
                 data={informationList}
                 keyExtractor={informationList => informationList.id.toString()}
                 showsVerticalScrollIndicator={false}
                 vertical
                 renderItem={({ item }) =>
-                <View style={{marginTop:RFPercentage(2),alignItems:'center',justifyContent:'center'}}>
+                <View style={styles.inputmain}>
                     <InputField placeholder={item.title}/>
                 </View>
              } />
             <TouchableOpacity activeOpacity={0.7} onPress={() => { props.navigation.navigate('ModalsScreen')}}
-                        style={{width:'100%',justifyContent:'center',alignItems:'center',position:'absolute',bottom:RFPercentage(4)}}>
+                        style={styles.buttonedit}>
                <AppButton title='Edit'/>
              </TouchableOpacity>
         </Screen>
   )
 }
+
+const styles = StyleSheet.create({
+    screen:{ flex: 1, justifyContent: 'flex-start',
+      alignItems:'center',backgroundColor: Colors.white },
+      
+      //inputfield
+      inputmain:{marginTop:RFPercentage(2),alignItems:'center',justifyContent:'center'},
+      flatstylinput:{width: '100%', marginTop: RFPercentage(5),flexGrow:0},
+
+      //header
+      headermain:{width:'100%',flexDirection:'row',alignItems:'center',justifyContent:'center',marginTop: RFPercentage(4)},
+
+      //button
+      buttonedit:{width:'100%',justifyContent:'center',alignItems:'center',position:'absolute',bottom:RFPercentage(4)},
+})

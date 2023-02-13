@@ -15,8 +15,8 @@ export default function LikeSavepost({likes,dislikes,add}) {
     const [like, setLike] = useState(true);
   return (
     <>
-           <View style={{flexDirection:'row',alignItems:'center',width:'60%',justifyContent:'space-between'}}>
-                  <View style={{alignItems:'center',justifyContent:'center'}}>
+           <View style={styles.mainleft}>
+                  <View style={styles.slignt}>
                     <TouchableOpacity activeOpacity={0.7} onPress={() => { setLike(true)}}>
                     <Foundation
                     name="like"
@@ -24,9 +24,9 @@ export default function LikeSavepost({likes,dislikes,add}) {
                     color={like==false?Colors.grey:Colors.third}
                   />
                   </TouchableOpacity>
-                  <Text style={{fontSize:RFPercentage(1.5),fontWeight:'600',color:Colors.black,fontFamily:FontFamily.semiBold}}>{likes}</Text>
+                  <Text style={styles.likdis}>{likes}</Text>
                     </View>
-                    <View style={{alignItems:'center',justifyContent:'center'}}>
+                    <View style={styles.slignt}>
                 <TouchableOpacity activeOpacity={0.7} onPress={() => { setLike(false)}}>
                     <Foundation
                     name="dislike"
@@ -34,18 +34,20 @@ export default function LikeSavepost({likes,dislikes,add}) {
                     color={like==true?Colors.grey:Colors.third}
                   />
                   </TouchableOpacity>
-                  <Text style={{fontSize:RFPercentage(1.5),fontWeight:'600',color:Colors.black,fontFamily:FontFamily.semiBold}}>{dislikes}</Text>
+                  <Text style={styles.likdis}>{dislikes}</Text>
                     </View>
-                    <View style={{alignItems:'center',justifyContent:'center'}}>
-                  <Image style={{ width:RFPercentage(4), height: RFPercentage(4) }} source={require('../../assets/images/addposticon.png')} />
-                    <Text style={{fontSize:RFPercentage(1.5),fontWeight:'600',color:Colors.black,marginTop:RFPercentage(0.5),fontFamily:FontFamily.semiBold}}>{add}</Text>
+                    <View style={styles.slignt}>
+                  <Image style={styles.addshricon} source={require('../../assets/images/addposticon.png')} />
+                    <Text style={styles.addshrtext}>{add}</Text>
                 </View>
-                <View style={{alignItems:'center',justifyContent:'center'}}>
-                  <Image style={{ width:RFPercentage(4), height: RFPercentage(4) }} source={require('../../assets/images/shareicon.png')} />
-                    <Text style={{fontSize:RFPercentage(1.5),fontWeight:'600',color:Colors.black,marginTop:RFPercentage(0.5),fontFamily:FontFamily.semiBold}}>share</Text>
+                <View style={styles.slignt}>
+                  <Image style={styles.addshricon} source={require('../../assets/images/shareicon.png')} />
+                    <Text style={styles.addshrtext}>share</Text>
                 </View>
                     </View>
-                 <View style={{width:'40%',alignItems:'flex-end',justifyContent:'center'}}>
+
+                    {/* saveicon */}
+                 <View style={styles.mainright}>
                   { savePost==true?<TouchableOpacity activeOpacity={0.7} onPress={() => { setSavePost(false)}}>
                     <MaterialCommunityIcons
                     name="bookmark"
@@ -62,9 +64,23 @@ export default function LikeSavepost({likes,dislikes,add}) {
                   />
                   
                   </TouchableOpacity>}
-                  <Text style={{fontSize:RFPercentage(1.5),fontWeight:'600',color:Colors.black,fontFamily:FontFamily.semiBold,
-                              marginRight:RFPercentage(0.5),marginTop:RFPercentage(0.5)}}>Save</Text>
+                  <Text style={styles.savetext}>Save</Text>
                     </View>
     </>
   )
 }
+
+const styles = StyleSheet.create({
+   mainleft:{flexDirection:'row',alignItems:'center',width:'60%',justifyContent:'space-between'},
+   slignt:{alignItems:'center',justifyContent:'center'},
+   likdis:{fontSize:RFPercentage(1.5),fontWeight:'600',color:Colors.black,fontFamily:FontFamily.semiBold},
+   addshricon:{ width:RFPercentage(4), height: RFPercentage(4) },
+   addshrtext:{fontSize:RFPercentage(1.5),fontWeight:'600',color:Colors.black,marginTop:RFPercentage(0.5),fontFamily:FontFamily.semiBold},
+
+   //save
+   mainright:{width:'40%',alignItems:'flex-end',justifyContent:'center'},
+   savetext:{fontSize:RFPercentage(1.5),fontWeight:'600',color:Colors.black,fontFamily:FontFamily.semiBold,
+   marginRight:RFPercentage(0.5),marginTop:RFPercentage(0.5)},
+
+
+})
